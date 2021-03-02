@@ -27,7 +27,8 @@ app.get('/api/notes', (req, res) => {
 
   app.post('/api/notes', (req, res) => {
     const newNote = req.body;
-      json.push(newNote)
+    newNote.id = shortid.generate();
+    json.push(newNote)
   });
 
 // Starts the server to begin listening
