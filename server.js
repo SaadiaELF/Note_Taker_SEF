@@ -31,6 +31,7 @@ app.post('/api/notes', (req, res) => {
   newNote.id = shortid.generate();
   json.push(newNote);
   fs.writeFileSync("./Develop/db/db.json", JSON.stringify(json));
+  res.json(json);
 });
 
 app.delete('/api/notes/:id', function (req, res) {
@@ -42,7 +43,7 @@ app.delete('/api/notes/:id', function (req, res) {
 
   //write the updated data to db.json and display the updated note
   fs.writeFileSync("./Develop/db/db.json", JSON.stringify(json));
-  res.send(`Deleting note with id ${noteId}`)
+  res.send(`Deleting note with id ${noteId}`);
 })
 
 // Starts the server to begin listening
