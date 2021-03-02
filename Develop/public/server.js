@@ -1,7 +1,7 @@
 // Dependencies
 const express = require('express');
 const path = require('path');
-// const json = require('./Develop/db/db.json');
+const json = require('./db/db.json');
 
 // Sets up the Express App
 const app = express();
@@ -20,6 +20,9 @@ app.get('/assets/css/styles.css', (req, res) => res.sendFile(path.join(__dirname
 
 app.get('/assets/js/index.js', (req, res) => res.sendFile(path.join(__dirname, 'assets/js/index.js')));
 
+app.get('/api/notes', (req, res) => {
+    res.json(json);
+  });
 
 // Starts the server to begin listening
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
