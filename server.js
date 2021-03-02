@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const json = require('./Develop/db/db.json');
+const shortid = require('shortid');
 
 // Sets up the Express App
 const app = express();
@@ -22,6 +23,11 @@ app.get('/assets/js/index.js', (req, res) => res.sendFile(path.join(__dirname, '
 
 app.get('/api/notes', (req, res) => {
     res.json(json);
+  });
+
+  app.post('/api/notes', (req, res) => {
+    const newNote = req.body;
+      json.push(newNote)
   });
 
 // Starts the server to begin listening
